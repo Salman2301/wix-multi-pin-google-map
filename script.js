@@ -1,29 +1,34 @@
-	
+
+
+
 window.onmessage = (event) => { 
     if (event.data) { 
-        let receivedData = event.data; 
-        initMap(receivedData);
+				let receivedData = event.data; 
+				
+				if(receivedData.isLocation){
+					initMap(receivedData);
+				}
     } 
 };
 
  function initMap(receivedData) {
-    
+			
 		var locations = receivedData;
 
-	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 10,
-		center: new google.maps.LatLng(-32.849159, 115.923557),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	});
+		var map = new google.maps.Map(document.getElementById('map'), {        
+			zoom: 10,
+			center: new google.maps.LatLng(-32.849159, 115.923557),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
 
-	var infowindow = new google.maps.InfoWindow({});
+		var infowindow = new google.maps.InfoWindow({});
 
-var markerIcon = {
-	  url: 'https://i.imgur.com/50GSB8T.png',
-	  scaledSize: new google.maps.Size(40, 40),
-	  origin: new google.maps.Point(0, 0),
-	  anchor: new google.maps.Point(32,65)
-};
+	var markerIcon = {
+		url: 'https://i.imgur.com/50GSB8T.png',
+		scaledSize: new google.maps.Size(40, 40),
+		origin: new google.maps.Point(0, 0),
+		anchor: new google.maps.Point(32,65)
+	};
 
 	var markerLabel = " "
 
@@ -34,12 +39,12 @@ var markerIcon = {
 			icon: markerIcon,
 			position: new google.maps.LatLng(locations[i].lat, locations[i].long),			
 			label: {
-			    text: markerLabel,
-			    fontSize: "16px",
-    			fontWeight: "bold"
-			  },
+					text: markerLabel,
+					fontSize: "16px",
+					fontWeight: "bold"
+				},
 			labelAnchor: new google.maps.Point(18, 12),
-  			labelClass: "my-custom-class-for-label"
+				labelClass: "my-custom-class-for-label"
 
 		});
 
