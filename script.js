@@ -1,4 +1,6 @@
+function new1() {
 
+}
 
 
 window.onmessage = (event) => { 
